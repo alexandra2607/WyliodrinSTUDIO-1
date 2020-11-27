@@ -32,9 +32,9 @@
 					:key="tutorial.title"	
 					:disabled="!available (tutorial.language)"
 					>
-						<!-- <v-list-item-avatar>
+						<v-list-item-avatar>
 							<v-img :src="boardIcon (tutorial.type, tutorial.board)"></v-img>
-						</v-list-item-avatar> -->
+						</v-list-item-avatar>
 						<v-list-item-content >
 								<v-list-item-title v-text="tutorial.title"></v-list-item-title>
 								<v-list-item-subtitle v-text="tutorial.description"></v-list-item-subtitle>
@@ -91,11 +91,11 @@ export default {
 		{
 			this.$root.$emit ('submit');
 		},
-		// boardIcon (type, board) {
-		// 	let icon =  this.studio.workspace.getBoardIcon (type, board);
-		// 	if (!icon) icon = 'plugins/tutorials/data/img/unknown_board.png';
-		// 	return icon;
-		// },
+		boardIcon (type, board) {
+			let icon =  this.studio.workspace.getBoardIcon (type, board);
+			if (!icon) icon = 'plugins/tutorials/data/img/unknown_board.png';
+			return icon;
+		},
 		languageIcon (languageId) {
 			let language = this.studio.projects.getLanguage (languageId);
 			if (language)
@@ -135,8 +135,6 @@ export default {
 						
 							let filePath = file.replace(tutorial.path, '');
 							let fileData = await this.downloadFile(file);
-							console.log (file);
-							console.log (fileData);
 							
 							await this.studio.projects.newFile(createProject, filePath, Buffer.from (fileData));
 							downloadedFiles++;
@@ -158,8 +156,7 @@ export default {
 		async getDirListOfFiles (path, dirInfos) {
 			
 			let response = await axios.get (`https://api.github.com/repos/${this.repository}/contents/${path}`);
-			// debugger
-			// console.log(response);
+			
 			for(let item of response.data) {
 				if (item.type === 'file') {
 					if (dirInfos[path] === undefined) {
