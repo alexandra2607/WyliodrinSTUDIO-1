@@ -32,9 +32,9 @@
 					:key="tutorial.title"	
 					:disabled="!available (tutorial.language)"
 					>
-						<v-list-item-avatar>
+						<!-- <v-list-item-avatar>
 							<v-img :src="boardIcon (tutorial.type, tutorial.board)"></v-img>
-						</v-list-item-avatar>
+						</v-list-item-avatar> -->
 						<v-list-item-content >
 								<v-list-item-title v-text="tutorial.title"></v-list-item-title>
 								<v-list-item-subtitle v-text="tutorial.description"></v-list-item-subtitle>
@@ -55,7 +55,6 @@
 
 <script>
 import axios from 'axios';
-//import { js2xml } from 'xml-js';
 export default {
 	name: 'Tutorials',
 	props: ['repository'],
@@ -92,11 +91,11 @@ export default {
 		{
 			this.$root.$emit ('submit');
 		},
-		boardIcon (type, board) {
-			let icon =  this.studio.workspace.getBoardIcon (type, board);
-			if (!icon) icon = 'plugins/tutorials/data/img/unknown_board.png';
-			return icon;
-		},
+		// boardIcon (type, board) {
+		// 	let icon =  this.studio.workspace.getBoardIcon (type, board);
+		// 	if (!icon) icon = 'plugins/tutorials/data/img/unknown_board.png';
+		// 	return icon;
+		// },
 		languageIcon (languageId) {
 			let language = this.studio.projects.getLanguage (languageId);
 			if (language)

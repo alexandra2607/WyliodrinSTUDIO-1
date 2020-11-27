@@ -17,21 +17,12 @@ export function setup(options, imports, register)
 				repository: githubRepository,
 				width: 600
 			});
-		},
-
-		/**
-		 * Import a tutorial from Github
-		 * 
-		 * @param {String} tutorialLink - github link for tutorial
-		 */
-		importTutorial (tutorialLink) {
-
 		}
 	};
 
 	studio.workspace.registerToolbarButton ('TUTORIALS_NAME', 20, 
 		() => { 
-			tutorials.showTutorials ('alexandruradovici/tutorials-wyliodrin');
+			tutorials.showTutorials ('alexandra2607/tutorials-wyliodrin');
 		},
 
 		'plugins/tutorials/data/img/toque.png');
